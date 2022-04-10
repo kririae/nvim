@@ -31,13 +31,14 @@ nmap("<LEADER>l", [[<CMD>LazyGit<CR>]])
 nmap("<C-c>", ":BufferLinePickClose<CR>") -- close tab
 
 -- move between tabs
-nmap(";n", [[<Cmd>BufferLineCycleNext<CR>]])
-nmap(";p", [[<Cmd>BufferLineCyclePrev<CR>]])
+-- nmap(";n", [[<Cmd>BufferLineCycleNext<CR>]])
+-- nmap(";p", [[<Cmd>BufferLineCyclePrev<CR>]])
 
 -- move tabs
-nmap("<A->>", [[<CMD>BufferLineMoveNext<CR>]])
-nmap("<A-<>", [[<CMD>BufferLineMovePrev<CR>]])
-nmap("<A-p>", [[<CMD>:BufferLinePick<CR>]])
+-- TODO: decide the shortcut for buffer switching
+-- nmap("<A->>", [[<CMD>BufferLineMoveNext<CR>]])
+-- nmap("<A-<>", [[<CMD>BufferLineMovePrev<CR>]])
+nmap(";p", [[<CMD>:BufferLinePick<CR>]])
 
 -- dispatch
 nmap(";d", ":Dispatch ", { noremap = true, silent = false })

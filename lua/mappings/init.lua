@@ -11,9 +11,13 @@ require("mappings.other")
 -- quicker motion
 nmap("J", "5j")
 xmap("J", "5j")
+nmap("j", "gj")
+xmap("j", "gj")
 
 nmap("K", "5k")
 xmap("K", "5k")
+nmap("k", "gk")
+xmap("k", "gk")
 
 nmap("L", "g_")
 nmap("H", "^")
@@ -25,7 +29,7 @@ nmap("W", "5w")
 nmap("B", "5b")
 
 -- no more background key
-nmap("<C-z>", "u")
+-- nmap("<C-z>", "u")
 
 -- move block easily
 nmap("<", "<<")
@@ -47,12 +51,13 @@ nmap(";q", ":lua require('plugins.bufdel').delete_buffer()<CR>")
 -- do thing like ctrl c and ctrl v
 xmap("<C-y>", [["+y]])
 nmap("<C-p>", [["+p]])
+nmap("<C-a>", [[:%y+<CR>]])
 map("i", "<C-p>", [[<ESC>"+pa]])
 
 -- shut down the search high light
 nmap("<ESC>", ":nohlsearch<CR>")
 -- no more finger expansion
-map("i", "<A-;>", "<ESC>")
+-- map("i", "<A-;>", "<ESC>")
 
 -- move around the window
 nmap(";k", "<C-w>k")

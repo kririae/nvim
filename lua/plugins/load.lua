@@ -25,6 +25,11 @@ local autoload = {
   {
     "lewis6991/impatient.nvim",
   },
+
+  -- wakatime!
+  {
+    "wakatime/vim-wakatime",
+  },
 }
 
 local markdown_plugins = {
