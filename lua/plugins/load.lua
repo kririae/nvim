@@ -184,6 +184,7 @@ local editor_enhance = {
   -- buffer manager
   {
     "akinsho/nvim-bufferline.lua",
+    branch = "main",
     config = function()
       require("plugins").load_cfg("bufferline_cfg")
     end,
@@ -204,6 +205,7 @@ local editor_enhance = {
 
   {
     "akinsho/toggleterm.nvim",
+    branch = "main",
     config = function()
       require("plugins").load_cfg("toggleterm_cfg")
     end,
@@ -482,6 +484,18 @@ local editor_enhance = {
         auto_session_enable_last_session = true,
         auto_save_enabled = true,
         auto_restore_enabled = true,
+      }
+    end,
+  },
+
+  {
+    'rmagatti/session-lens',
+    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+    config = function()
+      require('session-lens').setup {
+        path_display = {'shorten'},
+        theme_conf = { border = false },
+        previewer = true,
       }
     end,
   },

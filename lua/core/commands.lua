@@ -51,3 +51,5 @@ alias("SpectreOpen", "lua require('spectre').open()")
 
 alias("HiCurLine", [[call matchadd('HighlightLineMatches', '\%'.line('.').'l')]])
 alias("HiCurLineOff", [[call clearmatches()]])
+
+alias("SearchSessionTelescope", [[Telescope session-lens search_session]])

@@ -151,6 +151,8 @@ if installer.settings then
 
     if server.name == "sumneko_lua" then
       opts.settings = lua_setting
+    --[[ elseif server.name == "clangd" then
+      opts.filetypes = { "c", "cpp", "objc", "objcpp", "cuda" } ]]
     end
 
     -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
