@@ -31,10 +31,12 @@ g.enable_treesitter_ft = {
   "c",
   "comment",
   "cpp",
+  "fish",
   "go",
   "javascript",
   "json",
   "lua",
+  "nix",
   "rust",
   "toml",
 }

@@ -12,14 +12,17 @@
 
 ## Important Notes
 
-This project is still under active development, so new versions and breaking changes
-will be released frequently.
+Neovim v0.7.0 has released. The configuration itself is working fine.
+But there are also other changes that might incompatible with your computer.
 
----
-
-The [latest neovim changes(PR #17462)](https://github.com/neovim/neovim/pull/17462)
-will breaks the highlight.
-Please don't upgrade for now.
+- libvterm 0.1 is now required, as neovim has bug with 0.2 version. This might
+make your terminal can't handle keymap correctly.
+> Arch Linux can use this mechanic to replace the dependency:
+> https://github.com/neovim/neovim/issues/17956#issuecomment-1086647838/
+>
+> Bug Report: https://github.com/neovim/neovim/issues/16699
+>
+> Fix PR: https://github.com/neovim/neovim/pull/17329
 
 ## Motivation
 
