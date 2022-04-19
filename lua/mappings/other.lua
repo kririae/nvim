@@ -1,17 +1,18 @@
-local map = require("mappings.utils").map
+local map  = require("mappings.utils").map
 local nmap = require("mappings.utils").nmap
 
 -- EasyAlign
-map("v", "<leader>e", ":EasyAlign<CR>")
+-- map("v", "<leader>e", ":EasyAlign<CR>")
+map("v", ";e", ":EasyAlign<CR>")
 
 -- nvim-tree
 nmap(";t", ":NvimTreeToggle<CR>")
 
 -- fterm
 nmap("<C-\\>", [[:ToggleTerm direction=float<CR>]])
-nmap("<M-`>", [[:ToggleTerm direction=horizontal<CR>]])
-map("t", "<C-\\>", [[<C-\><C-n>:ToggleTerm<CR>]])
-map("t", "<C-n>", [[<C-\><C-n>]])
+nmap("<M-`>",  [[:ToggleTerm direction=horizontal<CR>]])
+map("t",       "<C-\\>", [[<C-\><C-n>:ToggleTerm<CR>]])
+map("t",       "<C-n>", [[<C-\><C-n>]])
 -- This for horizontal terminal
 map("t", ";k", [[<C-\><C-n><C-w>k]])
 -- This for vertical terminal
@@ -19,16 +20,18 @@ map("t", ";h", [[<C-\><C-n><C-w>h]])
 
 -- telescope
 nmap(";f", [[:lua require('telescope.builtin').find_files{}<CR>]])
-nmap("<LEADER>tg", [[:lua require('telescope.builtin').live_grep{}<CR>]])
+nmap(";g", [[:lua require('telescope.builtin').live_grep{}<CR>]])
+-- nmap("gd", [[:lua require('telescope.builtin').definitions{}<CR>]])
 
 -- fugitive
-nmap(";g", [[<CMD>Git<CR>]])
+-- nmap(";g", [[<CMD>Git<CR>]])
 
 -- lazygit
 nmap("<LEADER>l", [[<CMD>LazyGit<CR>]])
 
 -- bufferline tab stuff
-nmap("<C-c>", ":BufferLinePickClose<CR>") -- close tab
+-- nmap("<C-c>", ":BufferLinePickClose<CR>") -- close tab
+nmap("<C-w>", ":BufferLinePickClose<CR>") -- close tab
 
 -- move between tabs
 -- nmap(";n", [[<Cmd>BufferLineCycleNext<CR>]])

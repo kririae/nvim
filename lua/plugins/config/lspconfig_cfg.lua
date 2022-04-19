@@ -25,6 +25,7 @@ local on_attach = function(client, bufnr)
   }
   buf_set_keymap("n", "gd", "<Cmd>Lspsaga preview_definition<CR>", opts)
   buf_set_keymap("n", "gh", "<Cmd>Lspsaga hover_doc<CR>", opts)
+  buf_set_keymap("n", "gl", "<Cmd>Lspsaga lsp_finder<CR>", opts)
   buf_set_keymap(
     "n",
     "<C-u>",

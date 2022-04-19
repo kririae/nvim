@@ -66,10 +66,10 @@ nmap(";l", "<C-w>l")
 nmap(";h", "<C-w>h")
 
 -- resize the window
-nmap("<C-S-up>", ":res +5<CR>")
-nmap("<C-S-down>", ":res -5<CR>")
-nmap("<C-S-right>", ":vertical resize-5<CR>")
-nmap("<C-S-left>", ":vertical resize+5<CR>")
+nmap("<C-j>", ":res +5<CR>")
+nmap("<C-k>", ":res -5<CR>")
+nmap("<C-h>", ":vertical resize-5<CR>")
+nmap("<C-l>", ":vertical resize+5<CR>")
 
 -- center editing line
 map("i", "<C-c>", "<ESC>zzi")
