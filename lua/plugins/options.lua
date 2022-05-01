@@ -28,18 +28,21 @@ g.rooter_patterns = {
 
 -- enable treesitter for what filetype?
 g.enable_treesitter_ft = {
+  "bash",
   "c",
   "comment",
   "cpp",
   "cuda",
   "fish",
   "go",
+  "html",
   "javascript",
   "json",
   "lua",
   "nix",
   "rust",
   "toml",
+  "vim",
 }
 
 -- enable lspconfig for what filetype?
@@ -57,4 +60,25 @@ g.enable_lspconfig_ft = {
   "sh",
   "toml",
   "tex",
+}
+
+-- visual multi mappings
+-- clean the keymap `u` and initialize the new keymap set
+require("mappings.utils").map("", "u", "<nop>")
+g.VM_default_mappings = 0
+
+-- u is map to <C-z>, let us reuse it here
+g.VM_maps = {
+  ["Find Under"] = "un",
+  ["Find Subword Under"] = "un",
+  ["Select Cursor Down"] = "uj",
+  ["Select Cursor Up"] = "uk",
+  ["Undo"] = "<C-z>",
+  ["Redo"] = "<C-r>",
+  ["Start Regex Search"] = "ux",
+  ["Visual Regex"] = "ux",
+  ["Visual All"] = "uA",
+  ["Visual Add"] = "ua",
+  ["Visual Find"] = "uf",
+  ["Visual Cursors"] = "uc",
 }

@@ -4,28 +4,54 @@ if not ok then
   return
 end
 
+local function parse_config(path)
+  local json = require("cjson")
+  local loaded, file = pcall(io.open, path, "rb")
+  if not loaded or not file then
+    -- We shouldn't notify when file is not exist, let it be silent
+    -- vim.notify("fail to read rust-analyer settings from file " .. path .. ": " .. file)
+    return nil
+  end
+  local content = file:read("*all")
+  file:close()
+  local parse_ok, setting = pcall(json.decode, content)
+  if not parse_ok then
+    vim.notify("fail to parse rust-analyer settings from file " .. path .. ": " .. setting)
+    return nil
+  end
+  return setting
+end
+
+local function find_ra_settings()
+  -- cd to the directory which contains "Cargo.toml" file
+  require("packer").loader("vim-rooter")
+  vim.cmd("Rooter")
+  local filename = ".rust-analyzer.json"
+  local cwd = vim.fn.getcwd()
+  if cwd:sub(-1) == "/" then
+    return cwd .. filename
+  else
+    return cwd .. "/" .. filename
+  end
+end
+
+local filename = find_ra_settings()
+local settings = parse_config(filename)
+local default = {
+  cargo = {
+    autoreload = true,
+  },
+}
+
+if settings then
+  default = vim.tbl_deep_extend("force", default, settings)
+end
+
 local opts = {
   tools = {
     autoSetHints = true,
     hover_with_actions = true,
     executor = require("rust-tools/executors").termopen,
-    runnables = {
-      use_telescope = true,
-
-      prompt_prefix = "  ",
-      selection_caret = "  ",
-      entry_prefix = "  ",
-      initial_mode = "insert",
-      selection_strategy = "reset",
-      sorting_strategy = "descending",
-      layout_strategy = "vertical",
-      layout_config = {
-        width = 0.3,
-        height = 0.50,
-        preview_cutoff = 0,
-        prompt_position = "bottom",
-      },
-    },
 
     -- These apply to the default RustSetInlayHints command
     inlay_hints = {
@@ -53,7 +79,12 @@ local opts = {
       auto_focus = true,
     },
   },
-  server = { on_attach = require("plugins.config.lspconfig_cfg").set_lsp_key }, -- rust-analyer options
+  server = {
+    settings = {
+      ["rust-analyzer"] = default,
+    },
+    on_attach = require("plugins.config.lspconfig_cfg").set_lsp_key,
+  }, -- rust-analyer options
 }
 
 require("rust-tools").setup(opts)

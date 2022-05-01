@@ -6,7 +6,6 @@ end
 
 local tree_cb = tree_c.nvim_tree_callback
 
-vim.g.nvim_tree_indent_markers = 0
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_highlight_opened_files = 1
 vim.g.nvim_tree_root_folder_modifier = ":t"
@@ -51,7 +50,7 @@ require("nvim-tree").setup({
   open_on_tab = false,
   hijack_cursor = true,
   update_cwd = true,
-  update_to_buf_dir = { enable = true, auto_open = true },
+  hijack_directories = { enable = true, auto_open = true },
   diagnostics = {
     enable = false,
     icons = { hint = "", info = "", warning = "", error = "" },
@@ -85,6 +84,19 @@ require("nvim-tree").setup({
           buftype = { "nofile", "terminal", "help" },
         },
       },
+    },
+  },
+  renderer = {
+    indent_markers = {
+      enable = false,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        none = "  ",
+      },
+    },
+    icons = {
+      webdev_colors = true,
     },
   },
   view = {

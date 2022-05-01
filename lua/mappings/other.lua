@@ -20,9 +20,15 @@ map("t", ";k", [[<C-\><C-n><C-w>k]])
 map("t", ";h", [[<C-\><C-n><C-w>h]])
 
 -- telescope
-nmap(";f", [[:lua require('telescope.builtin').find_files{}<CR>]])
-nmap(";g", [[:lua require('telescope.builtin').live_grep{}<CR>]])
--- nmap("gd", [[:lua require('telescope.builtin').definitions{}<CR>]])
+nmap(";f", function()
+  require("telescope.builtin").find_files()
+end)
+nmap(";g", function()
+  require("telescope.builtin").live_grep()
+end)
+nmap("<leader>t", function()
+  require("telescope.command").load_command(nil, nil, nil, "builtin", "theme=ivy")
+end)
 
 -- fugitive
 -- nmap(";g", [[<CMD>Git<CR>]])
@@ -47,11 +53,11 @@ nmap(";p", [[<CMD>:BufferLinePick<CR>]])
 -- dispatch
 nmap(";d", ":Dispatch ", { noremap = true, silent = false })
 
--- rust-tools.nvim
-nmap("<Leader>ra", ':lua require("rust-tools.hover_actions").hover_actions()<CR>')
-
 -- fugitive
 -- keep the same prefix as the git sign
 -- See git-sign keymap in lua/plugins/config/gitsign_cfg.lua
 nmap("gic", ":Git commit -sS<CR>")
 nmap("giP", ":Git! push ", { silent = false })
+
+-- kill buffer with ;q , quit window with :q . This make sense.
+nmap(";q", require("plugins.bufdel").delete_buffer)
