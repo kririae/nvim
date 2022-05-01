@@ -41,6 +41,11 @@ local autoload = {
   {
     "wakatime/vim-wakatime",
   },
+
+  {
+    "glacambre/firenvim",
+    run = function() vim.fn['firenvim#install'](0) end
+  },
 }
 
 local markdown_plugins = {
@@ -78,6 +83,14 @@ local markdown_plugins = {
   {
     "dhruvasagar/vim-table-mode",
     cmd = "TableModeToggle",
+  },
+
+  -- equation preview
+  {
+    "jbyuki/nabla.nvim",
+    ft = {
+      "markdown",
+    },
   },
 }
 
@@ -808,6 +821,18 @@ local completion = {
         document = true,
       })
       require("cmp_dictionary").update() -- THIS
+    end,
+  },
+
+  {
+    "lervag/vimtex",
+    after = {
+      "nvim-cmp",
+    },
+    setup = function()
+      vim.g.vimtex_view_general_viewer = 'zathura'
+      vim.g.vimtex_view_method         = 'zathura'
+      vim.g.vimtex_compiler_progname   = 'nvr'
     end,
   },
 }

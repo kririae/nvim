@@ -3,7 +3,8 @@ local nmap = require("mappings.utils").nmap
 
 -- EasyAlign
 -- map("v", "<leader>e", ":EasyAlign<CR>")
-map("v", ";e", ":EasyAlign<CR>")
+map("v", "ga", [[<Plug>(EasyAlign)]])
+nmap("ga", [[<Plug>(EasyAlign)]])
 
 -- nvim-tree
 nmap(";t", ":NvimTreeToggle<CR>")

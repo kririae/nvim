@@ -56,4 +56,5 @@ g.enable_lspconfig_ft = {
   "python",
   "sh",
   "toml",
+  "tex",
 }
