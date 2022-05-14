@@ -42,6 +42,7 @@ local autoload = {
     "wakatime/vim-wakatime",
   },
 
+  -- firenvim
   {
     "glacambre/firenvim",
     run = function() vim.fn['firenvim#install'](0) end
@@ -91,6 +92,10 @@ local markdown_plugins = {
     ft = {
       "markdown",
     },
+  },
+
+  {
+    "junegunn/goyo.vim",
   },
 }
 
@@ -189,6 +194,9 @@ local editor_enhance = {
     after = "nvim-web-devicons",
     config = function()
       require("plugins").load_cfg("galaxyline_cfg")
+    end,
+    cond = function()
+      return true
     end,
   },
 
