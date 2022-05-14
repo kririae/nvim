@@ -20,6 +20,11 @@ xmap("k", "gk")
 nmap("K", "5k", d("Jump 5 lines up"))
 xmap("K", "5k", d("Jump 5 lines up"))
 
+map("i", "<C-h>", "<Home>")
+map("i", "<C-e>", "<End>")
+map("i", "<C-b>", "<ESC>bi")
+map("i", "<C-f>", "<ESC>wa")
+
 nmap("L", "g_", d("Jump to the end of the character"))
 nmap("H", "^", d("Jump to the beginning of the character"))
 

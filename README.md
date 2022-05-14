@@ -13,6 +13,14 @@
 ## Important Notes
 
 <details>
+    <summary markdown="span">Neovim v0.8.0 Incompatible Alert</summary>
+
+- Markdown Preview failed to open due to `NVIM_LISTEN_ADDRESS` [removal](https://github.com/iamcco/markdown-preview.nvim/issues/452).
+Fix available in my [fork](https://github.com/Avimitin/markdown-preview.nvim).
+
+</details>
+
+<details>
     <summary markdown="span">Neovim v0.7.0 Incompatible Alert</summary>
 
 Neovim v0.7.0 has released. The configuration itself is working fine.
@@ -39,6 +47,18 @@ If you are still using neovim 0.6.0, please checkout to the 4.0.2 version:
 git clone https://github.com/Avimitin/nvim
 git checkout 4.0.2
 ```
+</details>
+
+<details>
+    <summary markdown="span">Configuration capabilities list</summary>
+
+| Neovim Version                   | Configuration Version |
+|----------------------------------|-----------------------|
+| `NVIM-v0.8.0-dev+98-g069da468d5` | `HEAD`                |
+| `NVIM v0.8.0`                    | `6.0.0`               |
+| `NVIM v0.7*`                     | `5.2.2`               |
+| `NVIM v0.6*`                     | `4.0.2`               |
+
 </details>
 
 ## Motivation
@@ -79,6 +99,12 @@ git branch master
 
 Working with two different branches, you can always pull or pick new bugfix or feature
 from my configuration without messing up your configuration.
+
+> I will always write changes into CHANGELOG and release a new version after changes are made.
+> Please read the changelog each time you pull new changes. And if you are not satisfied
+> with the changes, you can `git checkout` the old version. You are also welcome to open an issue
+> to discuss with me. This config is considered as **MY** personal configuration,
+> and I can't guarantee I will stabilize it as the community do.
 
 You can read the full installation instruction here:
 [*Installation Guide*](https://avimitin.github.io/nvim/en_us/installation.html)
@@ -127,6 +153,10 @@ Besides, we have the most powerful table tools in vim:
 [vim-table-mode](https://github.com/dhruvasagar/vim-table-mode/)
 
 ![vim-table-mode-gif](./docs/images/tablemode.gif)
+
+### Keymap hinting
+
+![which-key.gif](./docs/images/which-key.gif)
 
 ### Colorscheme
 

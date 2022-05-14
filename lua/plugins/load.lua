@@ -64,8 +64,10 @@ local markdown_plugins = {
     run = function()
       vim.fn["mkdp#util#install"]()
     end,
-    config = function()
-      require("plugins").load_cfg("markdown_preview_cfg")
+    setup = function()
+      vim.g.mkdp_browser = "surf"
+      vim.g.mkdp_open_to_the_world = 1
+      vim.g.mkdp_port = "57843"
     end,
     ft = {
       "markdown",
@@ -171,6 +173,36 @@ local git_tools = {
 }
 
 local editor_enhance = {
+  -- prompt up panel to give a key mapping hint
+  {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup({
+        triggers = "auto",
+        triggers_blacklist = {
+          -- list of mode / prefixes that should never be hooked by WhichKey
+          -- this is mostly relevant for key maps that start with a native binding
+          -- most people should not need to change this
+          n = { "/", ":", "<", ">" },
+          i = { "j", "k" },
+          v = { "j", "k" },
+        },
+      })
+      require("mappings.whichkey")
+    end,
+    -- load this plugin after Neovim UI is already rendered
+    event = "VimEnter",
+  },
+
+  -- manage undo history
+  {
+    "simnalamburt/vim-mundo",
+    cmd = {
+      "MundoToggle",
+    },
+  },
+
+  -- manage windows
   {
     "sindrets/winshift.nvim",
     cmd = {
@@ -421,14 +453,6 @@ local editor_enhance = {
     event = "BufRead",
   },
 
-  -- repeat your last action, what ever command or keymaps or inputs
-  {
-    "tpope/vim-repeat",
-    keys = {
-      { "n", "." },
-    },
-  },
-
   -- a curl wrapper in neovim
   {
     "NTBBloodbath/rest.nvim",
@@ -471,7 +495,7 @@ local editor_enhance = {
     event = "WinEnter",
     config = function()
       require("focus").setup({
-        excluded_filetypes = { "fterm", "term", "toggleterm" },
+        excluded_filetypes = { "fterm", "term", "toggleterm", "Mundo", "MundoDiff" },
         signcolumn = false,
       })
     end,
@@ -619,7 +643,7 @@ local coding_enhance = {
 
   -- enhance the lsp UI
   {
-    "tami5/lspsaga.nvim",
+    "Avimitin/lspsaga.nvim",
     after = "nvim-lspconfig",
     config = function()
       require("plugins").load_cfg("lspsaga_cfg")
@@ -704,7 +728,7 @@ local coding_enhance = {
   {
     "numToStr/Comment.nvim",
     config = function()
-      require("Comment").setup()
+      require("Comment").setup({})
     end,
     keys = {
       { "n", "gcc" },
