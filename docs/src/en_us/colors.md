@@ -5,7 +5,7 @@ This section describe how I manage the colorscheme.
 ## Config path
 
 ```text
-lua/core/colors.lua
+lua/plugins/colorscheme/config.lua
 ```
 
 ## Change the theme
@@ -119,10 +119,6 @@ M.theme = "kanagawa"
 * nightfox
 
 ![nightfox-image](https://user-images.githubusercontent.com/2746374/158456286-9e3ee657-60e6-49d8-b85e-dcab285b31c3.png) 
-
-* dawnfox
-
-![dawnfox-image](https://user-images.githubusercontent.com/2746374/158456278-c5d656de-c445-44b8-9813-9fc91ffbce4c.png)
 
 * GitHub
 

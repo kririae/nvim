@@ -4,16 +4,7 @@
 
 ### Title
 
-Use format: `<type>[.|!] <module>: <summary>`.
-
-* _**Available type**_
-
-- **N**: for new feature
-- **F**: for bug fixes
-- **M**: for miscellaneous changes
-- **R**: for refactor
-- **D**: for document
-- Use the bang "!" to indicate that this commit contains breaking changes.
+Use format: `<module>[/<sub-module>]: <summary>`.
 
 Title should be wrap in 50 Latin characters.
 The first word of the title *should* be lower case and *must* be a verb.
@@ -56,12 +47,12 @@ So now the none-imperative commit are not working:
 ### Example
 
 ```text
-N. plugins: add new plugin
-F. lazygit: fix the submodule issue
-R! colors: replace the NormalFloat color         <- This one contains breaking change
- ^
-D. readme: update the installation guide
-M. ci: rename the ci filename
+plugins: add new plugin xxx
+lazygit: fix the submodule issue
+colors: replace the NormalFloat color         <- This one contains breaking change
+
+readme: update the installation guide
+ci: rename the ci filename
 ```
 
 The module name is optional. If you write the module name, please use `/` to separate
@@ -126,28 +117,11 @@ help you test the code, attach "Tested-by: Sam \<Sam@example.com\>".
 If you are using GPG to sign your commit, you can attach your name at the end
 of the rooter like: "Signed-off-by: Yourname \<name@example.com\>".
 
-## Semantic version
+## Versioning
 
-This document add additional details for how to increase semantic version.
-
-### API Compatibility
-
-- Plugins
-  - Major: Remove/Replace any plugin
-  - Minor: Add new plugin
-  - Minor: Modify plugin setting
-- Keymaps
-  - Major: Remove any keymap
-  - Minor: Add/Replace keymap
-- Options
-  - Minor: Update options
-- Colorscheme
-  - Major: Remove any colorscheme
-  - Minor: Update colorscheme setting
-  - Minor: Replace default colorscheme
-- utils.lua
-  - Major: Remove any functionality
-  - Minor: Add/Replace/Modify function
+This configuration is not gonna follow semver, instead, it use calendar versioning and
+release new version in each weekend.
+Version will be released in `cvYYYY.0M.0D` format.
 
 ## Benchmark
 
@@ -159,8 +133,7 @@ perl ./fixtures/benchmark.pl
 
 It will write result into the `./fixtures/benchmark.txt` file.
 
-## Changelog Generate
+## RELEASE.md
 
-```bash
-perl ./fixtures/clog_generate.pl
-```
+If any of the commits contains API compatibility changes, we must write them into
+RELEASE.md file for the next version release.

@@ -3,240 +3,200 @@
 
 ![badge](https://github.com/avimitin/nvim/actions/workflows/test.yml/badge.svg)
 ![badge](https://github.com/avimitin/nvim/actions/workflows/lint.yml/badge.svg)
-![badge](https://img.shields.io/badge/Language-Lua-blue?logo=lua&logoColor=blue)
-![badge](https://img.shields.io/github/contributors/Avimitin/nvim?color=dark-green)
-![badge](https://img.shields.io/github/issues/Avimitin/nvim)
 ![badge](https://img.shields.io/github/license/Avimitin/nvim)
-![badge](https://img.shields.io/github/forks/Avimitin/nvim?style=social)
-![badge](https://img.shields.io/github/stars/Avimitin/nvim?style=social)
 
-## Important Notes
+## Features
 
-<details>
-    <summary markdown="span">Neovim v0.8.0 Incompatible Alert</summary>
-
-- Markdown Preview failed to open due to `NVIM_LISTEN_ADDRESS` [removal](https://github.com/iamcco/markdown-preview.nvim/issues/452).
-Fix available in my [fork](https://github.com/Avimitin/markdown-preview.nvim).
-
-</details>
-
-<details>
-    <summary markdown="span">Neovim v0.7.0 Incompatible Alert</summary>
-
-Neovim v0.7.0 has released. The configuration itself is working fine.
-But there are also other changes that might incompatible with your computer.
-
-- libvterm 0.1 is now required, as neovim has bug with 0.2 version. This might
-make your terminal can't handle keymap correctly.
-
-    > Arch Linux can use this mechanic to replace the dependency:
-    > https://github.com/neovim/neovim/issues/17956#issuecomment-1086647838/
-    >
-    > Bug Report: https://github.com/neovim/neovim/issues/16699
-    >
-    > Fix PR: https://github.com/neovim/neovim/pull/17329
-
-</details>
-
-<details>
-    <summary markdown="span">Configuration Incompatible Alert</summary>
-The configuration is no more compatible with neovim 0.6.0 now.
-If you are still using neovim 0.6.0, please checkout to the 4.0.2 version:
-
-```bash
-git clone https://github.com/Avimitin/nvim
-git checkout 4.0.2
-```
-</details>
-
-<details>
-    <summary markdown="span">Configuration capabilities list</summary>
-
-| Neovim Version                   | Configuration Version |
-|----------------------------------|-----------------------|
-| `NVIM-v0.8.0-dev+98-g069da468d5` | `HEAD`                |
-| `NVIM v0.8.0`                    | `6.0.0`               |
-| `NVIM v0.7*`                     | `5.2.2`               |
-| `NVIM v0.6*`                     | `4.0.2`               |
-
-</details>
-
-## Motivation
-
-I want a text editor which is:
-
-* Fast. I don't need to care if I will have to spend seconds or minutes on
-opening a text file.
-* Powerful. I can use it to learn all the programming languages. I don't
-need to install IDE per language.
-* Handy. I don't need to move my hand to my mouse. I don't need to click
-the keyboard too much. I can have my cursor in place at the moment my eye first skim.
-* Fansy. I can treat it as a work of art, not a tool.
+* ***Fast*** and ***Lazy***: It takes [28ms](./fixtures/benchmark.txt) in average to open the neovim editor.
+And every plugin is handled well to be activate only when they are needed.
+Nothing should slowdown the editor.
+* ***Handy*** and ***Smoothy***: There will always be a panel to remind you
+when you forget your key settings. There will always be a short keystroke to help
+you get to the place you want to jump to. There will always…
+* ***Powerful*** coding experience: With the power from nvim-lspconfig, we can
+have "IDE Level" coding experience in the terminal.
+* ***Fancy looking***: Talk is cheap, see the [gallery](#Gallery).
 
 ## Getting Start
 
-This neovim config is personally biased and was not created for generic use.
-I recommend you use my configuration as a base and build your
-configuration. In my opinion, everyone should have their customized
-neovim.
-
 You can press the fork button to clone my project (Don't forget
-to smash the star button! `:)`) and pull the repo:
+to smash the star button! `:)`), then pull your repo to the local:
+
+This configuration is compatible with neovim 0.7+, the latest stable version.
+And consider using the latest stable release. I will push some experimental changes to
+the master branch, and they may be reverted.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/nvim.git ~/.config/nvim
+# You can fork and use git to download source code
+git clone --depth=1 https://github.com/Avimitin/nvim.git ~/.config/nvim
+# Then switch to the latest stable version
+git checkout latest
+
+# Or You can just download the latest stable version (Auto Retagged)
+curl "https://github.com/Avimitin/nvim/blob/master/scripts/install.bash" -o install.bash
+# Please read the script before you use it
+cat install.bash
+# Execute it
+bash install.bash
 ```
 
-Then rename the default branch to `upstream` and switch to a new `master` branch:
+Finally, input `nvim` to open the editor, and all plugins will be downloaded automatically.
 
 ```bash
-# rename master to upstream. Not necessary to be upstream, you can pick whatever you like as branch name.
-git branch -m master upstream
-
-# create new branch with name "master". Not necessary to be master too.
-git branch master
+nvim
 ```
-
-Working with two different branches, you can always pull or pick new bugfix or feature
-from my configuration without messing up your configuration.
-
-> I will always write changes into CHANGELOG and release a new version after changes are made.
-> Please read the changelog each time you pull new changes. And if you are not satisfied
-> with the changes, you can `git checkout` the old version. You are also welcome to open an issue
-> to discuss with me. This config is considered as **MY** personal configuration,
-> and I can't guarantee I will stabilize it as the community do.
 
 You can read the full installation instruction here:
-[*Installation Guide*](https://avimitin.github.io/nvim/en_us/installation.html)
+[**==> Installation Guide**](https://avimitin.github.io/nvim/en_us/installation.html)
 
-> ***Minimal vimrc***: If you want a minimal vimrc, use this
->
-> ```bash
-> # it is not tested yet, feel free to open issues
-> curl -SL "https://raw.githubusercontent.com/Avimitin/nvim/master/.vimrc" -o ~/.vimrc
->```
-
-## Document (WIP)
+## Document
 
 Please read [**NVIM GUIDANCE**](https://avimitin.github.io/nvim).
 
 ## Gallery
 
-So, what will you get from my configuration?
+<details>
+    <summary markdown="span">Utilities</summary>
 
-### Speed
+| Easy in-file jump                             |
+| --------------------------------------------- |
+| ![LightSpeed](./docs/images/lightspeed.png)   |
 
-I have optimized almost every plugins.
-Plugins can only be loaded when they are required.
-They will not delay the editor to start up.
-For an empty buffer, neovim takes only *25ms* to start up in average.
+| Which key?                                    |
+|-----------------------------------------------|
+| ![which-key.gif](./docs/images/which-key.gif) |
 
-You can read the [benchmark file](./fixtures/benchmark.txt)
-for the speed.
+</details>
 
-### Motion
 
-With the help from lightspeed, I can hop in place with few keys.
+<details>
+    <summary markdown="span">Markdown Utils</summary>
 
-![LightSpeed](./docs/images/lightspeed.png)
+| Markdown Preview                                   |
+|----------------------------------------------------|
+| ![image](./docs/images/neovim-md.png)              |
 
-### Markdown
+| Table                                              |
+|----------------------------------------------------|
+| ![vim-table-mode-gif](./docs/images/tablemode.gif) |
 
-Markdown can be generated in time with command `:MarkdownPreview`.
+</details>
 
-![image](./docs/images/neovim-md.png)
 
-Also, there are bunch of other utilities provided by
-[vim-markdown](https://github.com/plasticboy/vim-markdown).
+<details>
+    <summary markdown="span">Coding Utils</summary>
 
-Besides, we have the most powerful table tools in vim:
-[vim-table-mode](https://github.com/dhruvasagar/vim-table-mode/)
+| Diagnostic Panel |
+|-----------------|
+| ![image](./docs/images/trouble.png)  |
 
-![vim-table-mode-gif](./docs/images/tablemode.gif)
+| Code Completion                       |
+|---------------------------------------|
+| ![coding](./docs/images/nvim-cmp.png) |
 
-### Keymap hinting
+| Command Completion                                 |
+|----------------------------------------------------|
+| ![cmp-cmdline](./docs/images/nvim-cmp-cmdline.png) |
 
-![which-key.gif](./docs/images/which-key.gif)
+| Inline diagnostic analytics |
+|-----------------------------|
+| ![lsp-line](./docs/images/inline.png) |
 
-### Colorscheme
+| Signature Help                       |
+|--------------------------------------|
+| ![lsp-popup](./docs/images/help.png) |
 
-With the help from treesitter, we can have amazing code highlight.
+| Code Actions                                    |
+|-------------------------------------------------|
+| ![lsp-codeaction](./docs/images/codeaction.png) |
 
-You can see available colorscheme here: [colors.md](./docs/src/en_us/colors.md)
+| Diagnostic                                      |
+|-------------------------------------------------|
+| ![lsp-diagnostic](./docs/images/diagnostic.png) |
 
-### Coding
+| Debug CPP                               |
+|-----------------------------------------|
+| ![cpp](./docs/images/dap-debug-cpp.png) |
 
-- nvim-cmp
+| Debug Rust                                |
+|-------------------------------------------|
+| ![Rust](./docs/images/dap-debug-rust.png) |
 
-First of all, you will have configured completion menu.
+| Code navigate                          |
+|----------------------------------------|
+| ![Navigate](./docs/images/def-ref.png) |
 
-![coding](./docs/images/nvim-cmp.png)
+| Project grep                                        |
+|-----------------------------------------------------|
+| ![live-grep](./docs/images/telescope-live-grep.png) |
 
-Command line can also be completed:
+| Symbol search                                   |
+|-------------------------------------------------|
+| ![symbols](./docs/images/telescope-symbols.png) |
 
-![cmp-cmdline](./docs/images/nvim-cmp-cmdline.png)
+</details>
 
-- lspconfig
+<details>
+    <summary markdown="span">File Manage</summary>
 
-Then, you can use `:LspInstall` to install language server.
 
-![lspserver](https://user-images.githubusercontent.com/6705160/150685720-782e33ba-172c-44b6-8558-fb4e98495294.png)
+| File Manager                        |
+|-------------------------------------|
+| ![VFiler](./docs/images/vfiler.png) |
 
-After the installing your prefer lsp server, you will get a IDE like
-coding editor:
+| nvim-tree                                 |
+|-------------------------------------------|
+| ![nvim-tree](./docs/images/nvim-tree.png) |
 
-* Document pop up
+| Find file                                           |
+|-----------------------------------------------------|
+| ![find-file](./docs/images/telescope-find-file.png) |
 
-![lsp-popup](./docs/images/help.png)
+</details>
 
-* Code actions
+<details>
+    <summary markdown="span">Git Helper</summary>
 
-![lsp-codeaction](./docs/images/codeaction.png)
+| Fugitive                                       |
+|------------------------------------------------|
+| ![fugitive](./docs/images/neovim-fugitive.png) |
 
-* diagnostic panel
+| Lazygit                                      |
+|----------------------------------------------|
+| ![lazygit](./docs/images/neovim-lazygit.png) |
 
-![lsp-diagnostic](./docs/images/diagnostic.png)
+</details>
 
-* Debug Panel
 
-1. CPP
+<details>
+    <summary markdown="span">Themes</summary>
 
-![cpp](./docs/images/dap-debug-cpp.png)
+| Kanagawa Theme                          |
+|-----------------------------------------|
+| ![kanagawa](./docs/images/kanagawa.png) |
 
-2. Rust
+| Deus Theme                           |
+| ------------------------------------ |
+| ![kanagawa](./docs/images/deus.png)  |
 
-![Rust](./docs/images/dap-debug-rust.png)
+| GitHub Light Theme                                                                                                                                                        |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![gitHub](https://camo.githubusercontent.com/4bb7ad6c319b5ce63bed16cb25753e603fee510d59a1fad0245bc3d0bda8445d/68747470733a2f2f696d6775722e636f6d2f4f5077424449342e706e67)
 
-* Code navigate
-
-![Anyjump](./docs/images/anyjump.png)
-
-* Git tools
-
-1. fugitive
-
-![fugitive](./docs/images/neovim-fugitive.png)
-
-![fugitive](./docs/images/fugitive.png)
-
-2. lazygit
-
-![lazygit](./docs/images/neovim-lazygit.png)
-
-* file manager
-
-![VFiler](./docs/images/vfiler.png)
+</details>
 
 ## License
 
-MIT License
+This configuration since commit `912416ae9c4b55501b23a91d774b567ba8697dd1` are
+licenced under the Apache 2.0 license.
+
+另附：禁止在 CSDN，bilibili 等国内平台使用该配置文件进行任何活动。
+你只保有自己修改部分的权利。
 
 ## Credit
 
 The v1.0-vimscript version is originally inspired by
-[theniceboy/nvim](https://github.com/theniceboy/nvim).
-
-And lua code since v2.0 is inspired by
+[theniceboy/nvim](https://github.com/theniceboy/nvim). And lua code since v2.0 is inspired by
 [siduck76/NvChad](https://github.com/siduck76/NvChad).
 
 Take a look at their contribution, which is really fantastic.
@@ -244,3 +204,18 @@ Take a look at their contribution, which is really fantastic.
 ## Development Related
 
 Please read [development specifications](./docs/src/en_us/development.md).
+
+<br/>
+
+---
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<sup>有不少朋友问我翻斗花园是什么花园呢？其实就是大耳朵图图的家啦！</sup>
+<sup><s>
+我的 neovim 配置是翻斗花园第一配置，不服来打，我家住在翻斗大街翻斗花园2号楼1001室。
+我爸胡英俊，我妈张小丽，我叫胡图图，你来你看我干不干你就完事儿了。
+</s></sup>
